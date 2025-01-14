@@ -8,10 +8,13 @@ export default function ThemeInfo() {
         <Heading>
             Generate theme samples with AI
         </Heading>
-        <SearchBar placeholder="Enter a theme" />
-        <h3 className="g:-ml-2 lg:pl-2">
+        <h3 className="text-xl md:min-h-44 md:text-2xl">
             Transform a concept into a website theme. Powered by LLM agents.
         </h3>
+        <SearchBar placeholder="Enter a theme" />
+        <h2 className="text-lg md:text-xl font-bold">
+          Examples
+        </h2>
         <div className="grid">
             <ThemeThumbnail />
         </div>
