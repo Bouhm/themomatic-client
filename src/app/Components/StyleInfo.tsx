@@ -6,28 +6,25 @@ interface IStyleDetail {
 
 const details: IStyleDetail[] = [
     {
-        name: "Background Color"
-    },
-    {
         name: "Primary Color"
-    },
-    {
-        name: "Primary Action Color"
-    },
-    {
-        name: "Primary Border Color"
-    },
-    {
-        name: "Primary Font"
     },
     {
         name: "Secondary Color"
     },
     {
-        name: "Secondary Action Color"
+        name: "Primary Action Color"
     },
     {
         name: "Secondary Action Color"
+    },
+    {
+        name: "Primary Border Color"
+    },
+    {
+        name: "Secondary Border Color"
+    },
+    {
+        name: "Primary Font"
     },
     {
         name: "Secondary Font"
@@ -36,7 +33,7 @@ const details: IStyleDetail[] = [
 
 export default function StyleInfo() {
   return (
-    <div className="grid rounded-lg bg-white">
+    <div className="grid grid-cols-2 gap-4 rounded-lg p-6 bg-white">
         {details.map((detail,i) => <StyleDetail key={`${detail.name}-${i}`} color="white" label={detail.name}/>)}
     </div>
   );

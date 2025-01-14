@@ -4,7 +4,7 @@ import SearchBar from "./UI/SearchBar";
 
 export default function ThemeInfo() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-4">
         <Heading>
             Generate theme samples with AI
         </Heading>
