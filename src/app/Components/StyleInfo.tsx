@@ -1,5 +1,5 @@
 import StyleDetail from "./StyleDetail";
-import Button from "./UI/Button";
+import Button from "./ui/Button";
 
 interface IStyleDetail {
     name: string
@@ -32,12 +32,23 @@ const details: IStyleDetail[] = [
     }
 ]
 
-export default function StyleInfo() {
-  return (
-    <div className="grid grid-cols-2 gap-4 rounded-lg p-6 md:min-h-96 bg-white">
+type StyleInfoProps = {
+    color: string
+    containerStyle: string
+    buttonStyle: string
+}
+
+export default function StyleInfo({ color, containerStyle, buttonStyle }: StyleInfoProps) {
+    const style = { ...JSON.parse(containerStyle ?? ''), backgroundColor: color }
+
+    return (
+    <div 
+        className="grid grid-cols-2 gap-4 p-6 md:min-h-96"
+        style={style}
+    >
         {details.map((detail,i) => <StyleDetail key={`${detail.name}-${i}`} color="white" label={detail.name}/>)}
-        <Button primary>Primary</Button>
-        <Button>Secondary</Button>
+        <Button style={buttonStyle} primary>Primary</Button>
+        <Button style={buttonStyle} >Secondary</Button>
     </div>
-  );
+    );
 }

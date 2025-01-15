@@ -2,13 +2,17 @@ import { PropsWithChildren } from "react";
 
 type ButtonProps = {
     primary?: boolean
+    style: string
 } & PropsWithChildren
 
-export default function Button({  primary, children }: ButtonProps) {
-    const buttonStyle = primary ? 'bg-white border-black' : 'bg-black border-white'
+export default function Button({ primary, style, children }: ButtonProps) {
+    const buttonClassNames = primary ? 'bg-white border-black' : 'bg-black border-white'
 
     return (
-        <button className={`rounded-full border-solid border-4 text-center ${buttonStyle}`}>
+        <button 
+            className={`text-center ${buttonClassNames}`}
+            style={style ? JSON.parse(style) : {}}
+        >
             {children}
         </button>
     )

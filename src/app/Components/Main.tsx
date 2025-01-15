@@ -1,20 +1,25 @@
 "use client";
 import Head from 'next/head';
-import ThemeInfo from "./ThemeInfo";
-import StyleInfo from "./StyleInfo";
-import DefaultTheme from '../Data/defaultTheme.json';
-import { useEffect, useState } from 'react';
-import { IThemeConfig } from '../Data/interfaces';
+import DefaultTheme from '../data/defaultTheme.json';
+import { useEffect } from 'react';
+import { IThemeConfig } from '../data/interfaces';
+import useApi from '../hooks/useApi';
+import ThemeInfo from './ThemeInfo';
+import StyleInfo from './StyleInfo';
 
 export default function Home() {
-  const [styleConfig, setStyleConfig] = useState<IThemeConfig>();
+  const { data, error, isLoading } = useApi<IThemeConfig>('');
+  let themeConfig = data ?? DefaultTheme;
   let googleFontUrl;
 
   useEffect(() => {
-    setStyleConfig(DefaultTheme)
-    googleFontUrl = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(DefaultTheme.customStyle.font)};1&display=swap`; 
-  }, []);
-  
+    document.body.style.backgroundColor = themeConfig.palette.backgroundColor;
+    googleFontUrl = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(themeConfig.customStyle.font)};1&display=swap`;
+  }, [data])
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
   return (
     <>
       {/* dynamically load fonts */}
@@ -23,10 +28,18 @@ export default function Home() {
       </Head>
       <main className="flex flex-wrap md:flex-nowrap max-w-screen-2xl md:max-w-screen-full">
         <div className="flex-auto w-full md:w-3/5 p-18 md:pt-28 md:pl-28 md:pr-8">
-          <ThemeInfo />
+          <ThemeInfo 
+            font={themeConfig!.customStyle.font!}
+            pageStyle={themeConfig!.customStyle.backgroundStyle} 
+            inputStyle={themeConfig!.customStyle.inputStyle} 
+          />
         </div>
         <div className="flex-initial w-full md:w-2/5 p-18 md:pt-28 md:pr-28 md:pl-8">
-          <StyleInfo />
+          <StyleInfo 
+            color={themeConfig!.palette.containerColor}
+            containerStyle={themeConfig!.customStyle.containerStyle} 
+            buttonStyle={themeConfig!.customStyle.buttonStyle}
+          />
         </div>
       </main>
     </>

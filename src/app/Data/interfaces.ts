@@ -1,5 +1,6 @@
 interface IPalette {
   backgroundColor: string,
+  containerColor: string,
   primaryTextColor: string,
   secondaryTextColor: string,
   primaryActionColor: string,
@@ -10,11 +11,12 @@ interface ICustomStyle {
   font: string,
   backgroundStyle: string,
   containerStyle: string,
-  buttonStyle: string
+  buttonStyle: string,
+  inputStyle: string
 }
 
 export interface IThemeConfig {
-  name: string,
+  title: string,
   description: string,
   palette: IPalette,
   customStyle: ICustomStyle

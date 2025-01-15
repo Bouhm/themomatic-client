@@ -2,18 +2,20 @@ import { Icon } from '@iconify/react';
 
 type SearchBarProps = {
   placeholder: string
+  style: string
 }
 
-export default function SearchBar({ placeholder }: SearchBarProps) {
+export default function SearchBar({ placeholder, style }: SearchBarProps) {
   return (
     <div className="w-96">
       <input 
-        className="rounded-full p-3 w-full text-black"
+        className="p-3 w-full text-black"
         type="search"
         maxLength={24}
         placeholder={placeholder} 
+        style={style ? JSON.parse(style) : {}}
       />
-      <button className="rounded-full m-[-50px] align-middle w-12 h-12" type="submit">
+      <button className="m-[-50px] align-middle w-12 h-12" type="submit">
         <Icon 
           className="text-center m-auto" 
           icon="tabler:send" 
