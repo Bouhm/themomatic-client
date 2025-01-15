@@ -1,4 +1,4 @@
-import { JSX, PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
 type ButtonProps = {
     primary?: boolean
