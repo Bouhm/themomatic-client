@@ -1,13 +1,13 @@
-interface IPalette {
-  backgroundColor: string,
-  containerColor: string,
+export interface IPalette {
+  primaryColor: string,
+  secondaryColor: string,
   primaryTextColor: string,
   secondaryTextColor: string,
   primaryActionColor: string,
   secondaryActionColor: string
 }
 
-interface ICustomStyle {
+interface ICustomStyles {
   font: string,
   backgroundStyle: string,
   containerStyle: string,
@@ -19,5 +19,5 @@ export interface IThemeConfig {
   title: string,
   description: string,
   palette: IPalette,
-  customStyle: ICustomStyle
+  customStyles: ICustomStyles
 }

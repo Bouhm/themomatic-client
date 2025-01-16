@@ -2,18 +2,25 @@ import { PropsWithChildren } from "react";
 
 type ButtonProps = {
     primary?: boolean
+    colors: string[]
     style: string
 } & PropsWithChildren
 
-export default function Button({ primary, style, children }: ButtonProps) {
-    const buttonClassNames = primary ? 'bg-white border-black' : 'bg-black border-white'
+export default function Button({ primary, colors, style, children }: ButtonProps) {
+    const buttonStyles = { ...JSON.parse(style), backgroundColor: colors[+!!!primary] }
+
+    function handleOnClick() {  
+    }
 
     return (
         <button 
-            className={`text-center ${buttonClassNames}`}
-            style={style ? JSON.parse(style) : {}}
+            className="text-center min-w-28 p-2 m-4"
+            style={buttonStyles}
+            onClick={handleOnClick}
         >
-            {children}
+            <span style={{ filter: "invert(1)", mixBlendMode: "difference" }}>
+                {children}
+            </span>
         </button>
     )
 }

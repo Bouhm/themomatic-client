@@ -2,16 +2,16 @@
   "title": "Generate theme samples with AI",
   "description": "Transform a concept into a website theme. Powered by LLM agents.",
   "palette": {
-    "backgroundColor": "#0a0a0a",
-    "containerColor": "#FFF",
+    "primaryColor": "#0a0a0a",
+    "secondaryColor": "#FFF",
     "primaryTextColor": "#FFF",
     "secondaryTextColor": "#FFF",
     "primaryActionColor": "#000",
     "secondaryActionColor": "#FFF"
   },
-  "customStyle": {
+  "customStyles": {
     "font": "DM+Serif+Text",
-    "backgroundStyle": "{ \"backgroundColor\": \"black\" }",
+    "backgroundStyle": "{ \"background\": \"none\" }",
     "containerStyle": "{ \"borderRadius\": \"0.5em\" }",
     "buttonStyle": "{ \"borderRadius\": \"9999px\", \"border\": \"solid 4px black\" }",
     "inputStyle": "{ \"borderRadius\": \"9999px\" }"
