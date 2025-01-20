@@ -1,14 +1,21 @@
 import { Icon } from '@iconify/react';
+import { ChangeEvent, useState } from 'react';
 
 type SearchBarProps = {
   placeholder: string
   style: string
-  onSubmit: () => {}
+  onSubmit: (query: string) => void
 }
 
 export default function SearchBar({ placeholder, style, onSubmit }: SearchBarProps) {
+  const [query, setQuery] = useState('')
+
+  function handleOnChange(e: ChangeEvent<HTMLInputElement>) {
+    setQuery(e.currentTarget.value)
+  }
+
   function handleClickSubmit() {
-    onSubmit();
+    onSubmit(query);
   }
 
   return (
@@ -19,6 +26,7 @@ export default function SearchBar({ placeholder, style, onSubmit }: SearchBarPro
         maxLength={24}
         placeholder={placeholder} 
         style={style ? JSON.parse(style) : {}}
+        onChange={handleOnChange}
       />
       <button 
         className="m-[-50px] align-middle w-12 h-12" 

@@ -6,9 +6,10 @@ type ThemeInfoProps = {
   font: string
   pageStyle: string
   inputStyle: string
+  onSubmit: (query: string) => void
 }
 
-export default function ThemeInfo({ font, pageStyle, inputStyle }: ThemeInfoProps) {
+export default function ThemeInfo({ font, pageStyle, inputStyle, onSubmit }: ThemeInfoProps) {
   const customStyle = { ...JSON.parse(pageStyle ?? ''), font }
   
   return (
@@ -22,7 +23,7 @@ export default function ThemeInfo({ font, pageStyle, inputStyle }: ThemeInfoProp
         <h3 className="text-xl md:min-h-44 md:text-2xl">
             Transform a concept into a website theme. Powered by LLM agents.
         </h3>
-        <SearchBar style={inputStyle} placeholder="Enter a theme" />
+        <SearchBar style={inputStyle} placeholder="Enter a theme" onSubmit={onSubmit} />
         <h2 className="text-lg md:text-xl font-bold">
           Examples
         </h2>

@@ -1,47 +1,49 @@
 "use client";
 import DefaultTheme from '../data/defaultTheme.json';
-import { useEffect } from 'react';
-import { IThemeConfig } from '../data/interfaces';
 import useApi from '../hooks/useApi';
 import ThemeInfo from './ThemeInfo';
 import StyleInfo from './StyleInfo';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
-  const apiUrl = "https://themomatic-server.bouhm.workers.dev/generateTheme"
-  const { data, error, isLoading } = useApi<IThemeConfig>(apiUrl);
-  let themeConfig = DefaultTheme;
+  const apiUrl = "https://themomatic-server.bouhm.workers.dev"
+  const { isLoading, error, data, generateTheme } = useApi(apiUrl);
+  const [currentTheme, setCurrentTheme] = useState(DefaultTheme);
 
   useEffect(() => {
     if (data != null) {
-      themeConfig = data!;
-      document.body.style.backgroundColor = themeConfig.palette.primaryColor;
-      // googleFontUrl = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(customStyles.font)};1&display=swap`;
+      setCurrentTheme(data);
     }
-  }, [data])
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  }, [isLoading, error, data])
 
+  function handleSubmit(query: string) {
+    generateTheme(query);
+  }
+
+  if (isLoading) return <h1>Loading...</h1>
+  if (error) return <h1>Error: {error}</h1>
 
   return (
     <>
       {/* dynamically load fonts */}
       <main
         className="flex flex-wrap md:flex-nowrap max-w-screen-2xl md:max-w-screen-full"
-        style={JSON.parse(themeConfig.customStyles.backgroundStyle)}
+        style={JSON.parse(currentTheme.customStyles.backgroundStyle)}
       >
         <div className="flex-auto w-full md:w-3/5 p-18 md:pt-28 md:pl-28 md:pr-8">
           <ThemeInfo 
-            font={themeConfig.customStyles.font!}
-            pageStyle={themeConfig.customStyles.backgroundStyle} 
-            inputStyle={themeConfig.customStyles.inputStyle} 
+            font={currentTheme.customStyles.font!}
+            pageStyle={currentTheme.customStyles.backgroundStyle} 
+            inputStyle={currentTheme.customStyles.inputStyle} 
+            onSubmit={handleSubmit}
           />
         </div>
         <div className="flex-initial w-full md:w-2/5 p-18 md:pt-28 md:pr-28 md:pl-8">
           <StyleInfo 
-            palette={themeConfig.palette}
-            containerStyle={themeConfig.customStyles.containerStyle} 
-            buttonStyle={themeConfig.customStyles.buttonStyle}
+            palette={currentTheme.palette}
+            containerStyle={currentTheme.customStyles.containerStyle} 
+            buttonStyle={currentTheme.customStyles.buttonStyle}
           />
         </div>
       </main>

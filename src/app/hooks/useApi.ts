@@ -1,39 +1,52 @@
-import { useState, useEffect } from "react";
+import { useState, useCallback } from 'react';
+import { IThemeConfig } from '../data/interfaces';
 
-interface UseApiResult<T> {
-  data: T | null;
-  error: string | null;
-  isLoading: boolean;
-}
+const useApi = (apiUrl: string) => {
+  const [isLoading, setLoading] = useState(false);
+  const [error, setError] = useState<string|null>(null);
+  const [data, setData] = useState<IThemeConfig|null>(null)
 
-const useApi = <T>(url: string, options?: RequestInit): UseApiResult<T> => {
-  const [data, setData] = useState<T | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const request = useCallback(async (endpoint: string, method = 'POST', query = '') => {
+    setLoading(true);
+    setError(null);
 
-  useEffect(() => {
-    if (!url) return;
+    try {
+      const headers = {
+        'Content-Type': 'application/json',
+        // TODO: Generate and add user id for user rate usage tracking
+      };
 
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(url, options);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const result: T = await response.json();
-        setData(result);
-      } catch (err) {
-        setError((err as Error).message || "Something went wrong");
-      } finally {
-        setIsLoading(false);
+      const options: RequestInit = {
+        method,
+        headers,
+        body: JSON.stringify({ query })
+      };
+
+      const response = await fetch(`${apiUrl}${endpoint}`, options);
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status} ${response.statusText}`);
       }
-    };
 
-    fetchData();
-  }, [url, options]);
+      const result = await response.json();
+      setData(result)
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('An unknown error occurred');
+      }
+    } finally {
+      setLoading(false);
+    }
+  }, [apiUrl]);
 
-  return { data, error, isLoading };
+  return {
+    isLoading,
+    error,
+    data,
+    generateTheme: (query: string) => request('/generateTheme', 'POST', query),
+  };
 };
 
 export default useApi;
