@@ -3,9 +3,14 @@ import { Icon } from '@iconify/react';
 type SearchBarProps = {
   placeholder: string
   style: string
+  onSubmit: () => {}
 }
 
-export default function SearchBar({ placeholder, style }: SearchBarProps) {
+export default function SearchBar({ placeholder, style, onSubmit }: SearchBarProps) {
+  function handleClickSubmit() {
+    onSubmit();
+  }
+
   return (
     <div className="w-96">
       <input 
@@ -15,7 +20,11 @@ export default function SearchBar({ placeholder, style }: SearchBarProps) {
         placeholder={placeholder} 
         style={style ? JSON.parse(style) : {}}
       />
-      <button className="m-[-50px] align-middle w-12 h-12" type="submit">
+      <button 
+        className="m-[-50px] align-middle w-12 h-12" 
+        type="submit"
+        onClick={handleClickSubmit}
+      >
         <Icon 
           className="text-center m-auto" 
           icon="tabler:send" 
