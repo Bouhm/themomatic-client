@@ -17,7 +17,7 @@ export default function Home() {
 
     const theme = data ?? currentTheme;
     document.body.style.backgroundColor = theme.palette.primaryColor;
-  }, [isLoading, error, data])
+  }, [isLoading, error, data, currentTheme])
 
   function handleSubmit(query: string) {
     generateTheme(query);

@@ -13,13 +13,15 @@ const useApi = (apiUrl: string) => {
     try {
       const headers = {
         'Content-Type': 'application/json',
-        // TODO: Generate and add user id for user rate usage tracking
+        'Authorization': `Bearer ${process.env.CLIENT_KEY}`,
       };
 
       const options: RequestInit = {
         method,
         headers,
-        body: JSON.stringify({ query })
+        body: JSON.stringify({
+          query
+        })
       };
 
       const response = await fetch(`${apiUrl}${endpoint}`, options);
