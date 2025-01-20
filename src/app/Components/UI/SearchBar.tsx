@@ -14,12 +14,15 @@ export default function SearchBar({ placeholder, style, onSubmit }: SearchBarPro
     setQuery(e.currentTarget.value)
   }
 
-  function handleClickSubmit() {
+  function handleSubmit() {
     onSubmit(query);
   }
 
   return (
-    <div className="w-96">
+    <form
+      className="w-96"
+      onSubmit={handleSubmit}
+    >
       <input 
         className="p-3 w-full text-black"
         type="search"
@@ -31,7 +34,6 @@ export default function SearchBar({ placeholder, style, onSubmit }: SearchBarPro
       <button 
         className="m-[-50px] align-middle w-12 h-12" 
         type="submit"
-        onClick={handleClickSubmit}
       >
         <Icon 
           className="text-center m-auto" 
@@ -41,6 +43,6 @@ export default function SearchBar({ placeholder, style, onSubmit }: SearchBarPro
           width="20" 
         />
       </button>
-    </div>
+    </form>
   )
 }
