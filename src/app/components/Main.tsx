@@ -1,3 +1,4 @@
+"use client"
 import DefaultTheme from '../data/defaultTheme.json';
 import useApi from '../hooks/useApi';
 import ThemeInfo from './ThemeInfo';
