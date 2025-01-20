@@ -4,7 +4,7 @@ import ThemeInfo from './ThemeInfo';
 import StyleInfo from './StyleInfo';
 import { useEffect, useState } from 'react';
 
-export default function Content() {
+export default function Main() {
   const apiUrl = "https://themomatic-server.bouhm.workers.dev"
   const { isLoading, error, data, generateTheme } = useApi(apiUrl);
   const [currentTheme, setCurrentTheme] = useState(DefaultTheme);
