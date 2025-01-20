@@ -4,7 +4,7 @@
   "palette": {
     "primaryColor": "#0a0a0a",
     "secondaryColor": "#FFF",
-    "primaryTextColor": "#FFF",
+    "primaryTextColor": "#000",
     "secondaryTextColor": "#FFF",
     "primaryActionColor": "#000",
     "secondaryActionColor": "#FFF"
