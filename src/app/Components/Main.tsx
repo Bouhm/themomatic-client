@@ -5,16 +5,18 @@ import ThemeInfo from './ThemeInfo';
 import StyleInfo from './StyleInfo';
 import { useEffect, useState } from 'react';
 
-export default function Main() {
+export default function Home() {
   const apiUrl = "https://themomatic-server.bouhm.workers.dev"
   const { isLoading, error, data, generateTheme } = useApi(apiUrl);
   const [currentTheme, setCurrentTheme] = useState(DefaultTheme);
 
   useEffect(() => {
     if (data != null) {
-      setCurrentTheme(data);
+      setCurrentTheme(data)
     }
 
+    const theme = data ?? currentTheme;
+    document.body.style.backgroundColor = theme.palette.primaryColor;
   }, [isLoading, error, data])
 
   function handleSubmit(query: string) {
