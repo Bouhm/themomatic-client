@@ -67,7 +67,10 @@ export default function Main() {
     // Add dynamic fonts
     const { primaryFont, secondaryFont } = themeConfig.customStyles;
     const fontLink = document.querySelector("link[rel='stylesheet'][data-theme-font]");
-    const formattedFonts = `family=${primaryFont}&family=${secondaryFont}`.replace(/ /g, '+');
+    const formattedFonts = `family=${primaryFont}&family=${secondaryFont}`
+      .replace("'", "")
+      .replace(", serif", "").replace(", sans-serif", "").replace(", cursive", "")
+      .replace(/ /g, '+');
     const fullLink = `https://fonts.googleapis.com/css2?${formattedFonts}&display=swap`;
 
     if (fontLink) {
