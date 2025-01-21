@@ -10,7 +10,7 @@ import { tryParseJson } from '@/utils';
 
 const MAX_PER_DAY = 5;
 const COOLDOWN = 60 * 1000; 
-const apiUrl = "https://themomatic-server.workers.dev"
+const apiUrl = "https://themomatic-server.bouhm.workers.dev"
 
 export default function Main() {
   const { isLoading, error, data, generateTheme } = useApi(apiUrl);
