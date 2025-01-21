@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useTheme } from "../hooks/useTheme";
 import Container from "./Container";
 
-const texts = ["Artificially intelligencing...", "Googling specific CSS...", "Chatting with chatbots...", "Downloading more intelligence...", "Cooking...", "Booping the beeps..."]
+const texts = ["Artificially intelligencing...", "Googling very specific CSS questions...", "Chatting with chatbots...", "Downloading more intelligence...", "Cooking...", "Booping the beeps..."]
 
 export default function Loader() {
   const { themeConfig } = useTheme();

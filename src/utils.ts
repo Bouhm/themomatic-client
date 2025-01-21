@@ -15,3 +15,15 @@ export function camelCaseToTitle(text: string) {
 
   return titleCase;
 }
+
+export function tryParseJson(jsonStr: string) {
+  let parsedJson: Record<string, string | number> = {};
+
+  try {
+    parsedJson = tryParseJson(jsonStr);
+  } catch {
+    return {};
+  } finally {
+    return parsedJson;
+  }
+}

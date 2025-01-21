@@ -1,16 +1,18 @@
 import { useTheme } from "../hooks/useTheme";
 import Container from "./Container";
+import Button from "./ui/Button";
 
 type ErrorProps = {
-  error: string
+  error: string,
+  onClose: () => void
 }
 
-export default function Error({ error }: ErrorProps) {
+export default function Error({ onClose, error }: ErrorProps) {
   const { themeConfig } = useTheme();
 
   return (
     <div
-      className="fixed top-0 right-0 bottom-0 left-0 backdrop-blur-sm flex justify-center items-center"
+      className="fixed top-0 right-0 bottom-0 left-0 backdrop-blur-sm flex justify-center items-center text-center"
     >
       <div
         className="fixed top-0 right-0 bottom-0 left-0 opacity-50"
@@ -25,6 +27,7 @@ export default function Error({ error }: ErrorProps) {
         >
           {error}
         </h2>
+        <Button onClick={onClose}>Close</Button>
       </Container>
     </div>
   );

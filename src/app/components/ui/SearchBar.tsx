@@ -1,6 +1,6 @@
 import { useTheme } from '@/app/hooks/useTheme';
 import { Icon } from '@iconify/react';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 
 type SearchBarProps = {
   placeholder: string
@@ -15,22 +15,26 @@ export default function SearchBar({ placeholder, onSubmit }: SearchBarProps) {
     setQuery(e.currentTarget.value)
   }
 
-  function handleSubmit() {
+  const handleSubmit = useCallback((e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
     onSubmit(query);
-  }
+    setQuery('');
+  }, [onSubmit, query]); 
 
   return (
     <form
       className="w-full p-6 md:w-96 md:p-0"
+      style={{ color: themeConfig.palette.secondaryText }}
       onSubmit={handleSubmit}
     >
       <input 
         className="p-4 w-full text-black"
         type="search"
         maxLength={30}
-        placeholder={placeholder} 
+        placeholder={placeholder}
         style={JSON.parse(themeConfig!.customStyles.input)}
         onChange={handleOnChange}
+        value={query}
       />
       <button 
         className="m-[-50px] align-middle w-12 h-12" 

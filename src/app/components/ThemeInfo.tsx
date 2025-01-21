@@ -9,12 +9,12 @@ type ThemeInfoProps = {
 
 export default function ThemeInfo({ onSubmit }: ThemeInfoProps) {
   const { themeConfig } = useTheme()
-  const { title, description, customStyles, palette } = themeConfig!;
+  const { title, description, palette } = themeConfig!;
 
   return (
     <div 
       className="flex flex-col gap-4 background:none"
-      style={{ ...JSON.parse(customStyles.background), color: palette.primaryText }}
+      style={{ color: palette.primaryText }}
     >
       <Heading>
         {title}

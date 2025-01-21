@@ -1,5 +1,6 @@
 import { PropsWithChildren } from "react";
 import { useTheme } from "../hooks/useTheme";
+import { tryParseJson } from "@/utils";
 
 type ContainerProps = {
   classNames?: string
@@ -11,7 +12,7 @@ export default function Container({ classNames, children }: ContainerProps) {
   return (
     <div
       className={`p-4 ${classNames}`}
-      style={JSON.parse(themeConfig.customStyles.container) ?? {}
+      style={tryParseJson(themeConfig.customStyles.container) ?? {}
     }>
       {children}
     </div>
