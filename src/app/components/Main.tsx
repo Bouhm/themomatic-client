@@ -10,9 +10,9 @@ import { tryParseJson } from '@/utils';
 
 const MAX_PER_DAY = 5;
 const COOLDOWN = 60 * 1000; 
+const apiUrl = "https://themomatic-server.workers.dev"
 
 export default function Main() {
-  const apiUrl = "http://127.0.0.1:8787"
   const { isLoading, error, data, generateTheme } = useApi(apiUrl);
   const { themeConfig, setThemeConfig } = useTheme();
   const [errorMessage, setErrorMessage] = useState(error);
@@ -80,6 +80,7 @@ export default function Main() {
       return;
     }
 
+    // Keep track of total number of requests by user
     const now = new Date().getTime();
     const prevRequests = JSON.parse(localStorage.getItem('requests')!) || [];
 
@@ -89,6 +90,7 @@ export default function Main() {
     setRequests(prevRequests.length);
     setIsCooldown(true);
 
+    // Set cooldown in between requests
     setTimeout(() => setIsCooldown(false), COOLDOWN);
 
     generateTheme(query);
