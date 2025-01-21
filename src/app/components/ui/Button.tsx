@@ -18,7 +18,7 @@ export default function Button({ primary, colors, style, children }: ButtonProps
             style={buttonStyles}
             onClick={handleOnClick}
         >
-            <span style={{ filter: "invert(1)", mixBlendMode: "difference" }}>
+            <span>
                 {children}
             </span>
         </button>

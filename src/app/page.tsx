@@ -1,9 +1,12 @@
 import Main from "./components/Main";
+import { ThemeProvider } from "./hooks/useTheme";
 
 export default function Home() {  
   return (
-    <div className="min-h-screen flex justify-center">
-      <Main />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen flex justify-center">
+        <Main />
+      </div>
+    </ThemeProvider>
   );
 }

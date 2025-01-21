@@ -1,14 +1,15 @@
+import { useTheme } from '@/app/hooks/useTheme';
 import { Icon } from '@iconify/react';
 import { ChangeEvent, useState } from 'react';
 
 type SearchBarProps = {
   placeholder: string
-  style: string
   onSubmit: (query: string) => void
 }
 
-export default function SearchBar({ placeholder, style, onSubmit }: SearchBarProps) {
-  const [query, setQuery] = useState('')
+export default function SearchBar({ placeholder, onSubmit }: SearchBarProps) {
+  const { themeConfig } = useTheme();
+  const [query, setQuery] = useState('');
 
   function handleOnChange(e: ChangeEvent<HTMLInputElement>) {
     setQuery(e.currentTarget.value)
@@ -20,15 +21,15 @@ export default function SearchBar({ placeholder, style, onSubmit }: SearchBarPro
 
   return (
     <form
-      className="w-96"
+      className="w-full p-6 md:w-96 md:p-0"
       onSubmit={handleSubmit}
     >
       <input 
-        className="p-3 w-full text-black"
+        className="p-4 w-full text-black"
         type="search"
-        maxLength={24}
+        maxLength={30}
         placeholder={placeholder} 
-        style={JSON.parse(style)}
+        style={JSON.parse(themeConfig!.customStyles.input)}
         onChange={handleOnChange}
       />
       <button 
