@@ -13,7 +13,7 @@ const useApi = (apiUrl: string) => {
     try {
       const headers = {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.CLIENT_KEY}`,
+        'Authorization': `Bearer ${process.env.CLIENT_KEY}`, // Bare bones measure
       };
 
       const options: RequestInit = {
@@ -31,7 +31,8 @@ const useApi = (apiUrl: string) => {
       }
 
       const result = await response.json();
-      setData(result)
+      console.log(result.data)
+      setData(result.data)
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);

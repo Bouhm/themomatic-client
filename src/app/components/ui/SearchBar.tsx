@@ -28,7 +28,7 @@ export default function SearchBar({ placeholder, style, onSubmit }: SearchBarPro
         type="search"
         maxLength={24}
         placeholder={placeholder} 
-        style={style ? JSON.parse(style) : {}}
+        style={JSON.parse(style)}
         onChange={handleOnChange}
       />
       <button 
@@ -38,7 +38,6 @@ export default function SearchBar({ placeholder, style, onSubmit }: SearchBarPro
         <Icon 
           className="text-center m-auto" 
           icon="tabler:send" 
-          color="black" 
           height="20" 
           width="20" 
         />

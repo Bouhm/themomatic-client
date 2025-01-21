@@ -2,17 +2,19 @@ import { camelCaseToTitle } from "@/utils";
 import { IPalette } from "../data/interfaces";
 import StyleDetail from "./StyleDetail";
 import Button from "./ui/Button";
+import { CSSProperties } from "react";
+
 
 type StyleInfoProps = {
     palette: IPalette
     containerStyle: string
-    buttonStyle: string
+    buttonStyles: string[]
 }
 
-export default function StyleInfo({ palette, containerStyle, buttonStyle }: StyleInfoProps) {
-    const { secondaryColor, primaryActionColor, secondaryActionColor } = palette;
-    const buttonColors = [primaryActionColor, secondaryActionColor];
-    const style = { ...JSON.parse(containerStyle ?? ''), backgroundColor: secondaryColor }
+export default function StyleInfo({ palette, containerStyle, buttonStyles }: StyleInfoProps) {
+    const { secondary, primaryAction, secondaryAction } = palette;
+    const buttonColors = [primaryAction, secondaryAction];
+    const style = { ...JSON.parse(containerStyle), backgroundColor: secondary } as CSSProperties;
 
     return (
         <div className="p-4" style={style}>
@@ -23,8 +25,8 @@ export default function StyleInfo({ palette, containerStyle, buttonStyle }: Styl
                     return <StyleDetail key={`${entry[0]}-${i}`} color={entry[1].toUpperCase()} label={camelCaseToTitle(entry[0])} />
                 })}
             </div>
-            <Button colors={buttonColors} style={buttonStyle} primary>Copy</Button>
-            <Button colors={buttonColors} style={buttonStyle}>Clear</Button>
+            <Button colors={buttonColors} style={buttonStyles[0]} primary>Copy</Button>
+            <Button colors={buttonColors} style={buttonStyles[1]}>Clear</Button>
         </div>
     );
 }

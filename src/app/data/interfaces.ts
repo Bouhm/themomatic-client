@@ -1,18 +1,20 @@
 export interface IPalette {
-  primaryColor: string,
-  secondaryColor: string,
-  primaryTextColor: string,
-  secondaryTextColor: string,
-  primaryActionColor: string,
-  secondaryActionColor: string
+  primary: string,
+  secondary: string,
+  primaryText: string,
+  secondaryText: string,
+  primaryAction: string,
+  secondaryAction: string
 }
 
 interface ICustomStyles {
-  font: string,
-  backgroundStyle: string,
-  containerStyle: string,
-  buttonStyle: string,
-  inputStyle: string
+  primaryFont: string,
+  secondaryFont: string,
+  background: string,
+  container: string,
+  primaryButton: string,
+  secondaryButton: string,
+  input: string
 }
 
 export interface IThemeConfig {

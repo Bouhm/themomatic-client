@@ -2,18 +2,20 @@
   "title": "Generate theme samples with AI",
   "description": "Transform a concept into a website theme. Powered by LLM agents.",
   "palette": {
-    "primaryColor": "#0a0a0a",
-    "secondaryColor": "#FFF",
-    "primaryTextColor": "#FFF",
-    "secondaryTextColor": "#000",
-    "primaryActionColor": "#000",
-    "secondaryActionColor": "#FFF"
+    "primary": "#0a0a0a",
+    "secondary": "#FFF",
+    "primaryText": "#FFF",
+    "secondaryText": "#000",
+    "primaryAction": "#000",
+    "secondaryAction": "#FFF"
   },
   "customStyles": {
-    "font": "DM+Serif+Text",
-    "backgroundStyle": "{ \"background\": \"none\" }",
-    "containerStyle": "{ \"borderRadius\": \"0.5em\" }",
-    "buttonStyle": "{ \"borderRadius\": \"9999px\", \"border\": \"solid 4px black\" }",
-    "inputStyle": "{ \"borderRadius\": \"9999px\" }"
+    "primaryFont": "DM Serif Text",
+    "secondaryFont": "Red Hat Text",
+    "background": "{ \"background\": \"none\" }",
+    "container": "{ \"borderRadius\": \"0.5em\" }",
+    "primaryButton": "{ \"borderRadius\": \"9999px\", \"border\": \"solid 4px black\" }",
+    "secondaryButton": "{ \"borderRadius\": \"9999px\", \"border\": \"solid 4px black\" }",
+    "input": "{ \"borderRadius\": \"9999px\" }"
   }
 }
