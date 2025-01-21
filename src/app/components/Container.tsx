@@ -11,7 +11,7 @@ export default function Container({ classNames, children }: ContainerProps) {
 
   return (
     <div
-      className={`p-4 ${classNames}`}
+      className={classNames}
       style={tryParseJson(themeConfig.customStyles.container) ?? {}
     }>
       {children}

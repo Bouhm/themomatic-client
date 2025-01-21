@@ -2,14 +2,35 @@ import { useTheme } from "../hooks/useTheme";
 import ThemeThumbnail from "./ThemeThumbnail";
 import Heading from "./ui/Heading";
 import SearchBar from "./ui/SearchBar";
+import cptheme from "../data/cyberpunk.json";
+import htheme from "../data/halloween.json";
+import satheme from "../data/swissalps.json";
 
 type ThemeInfoProps = {
   onSubmit: (query: string) => void
 }
 
+const examples = ["halloween", "cyberpunk", "swissalps"];
+
 export default function ThemeInfo({ onSubmit }: ThemeInfoProps) {
-  const { themeConfig } = useTheme()
+  const { themeConfig, setThemeConfig } = useTheme()
   const { title, description, palette } = themeConfig!;
+
+  function handleClickExample(example: string) {
+    switch (example) {
+      case "halloween":
+        setThemeConfig(htheme);
+        break;
+      case "cyberpunk":
+        setThemeConfig(cptheme);
+        break;
+      case "swissalps":
+        setThemeConfig(satheme);
+        break;
+      default:
+        break;
+    }
+  }
 
   return (
     <div 
@@ -30,8 +51,10 @@ export default function ThemeInfo({ onSubmit }: ThemeInfoProps) {
       >
         Examples
       </h2>
-      <div className="flex justify-center md:justify-normal gap-6 mb-6">
-          <ThemeThumbnail />
+      <div className="flex gap-6 mb-6">
+        {examples.map((example) => {
+          return <ThemeThumbnail key={example} imgName={example} onClick={() => handleClickExample(example)} />
+        })}
       </div>
     </div>
   );

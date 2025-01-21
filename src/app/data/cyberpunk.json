@@ -1,0 +1,21 @@
+{
+  "title": "Cyberpunk Neon Theme",
+  "description": "This theme captures the essence of a cyberpunk, neon-infused world with vibrant colors, bold contrasts, and futuristic fonts.",
+  "palette": {
+    "primary": "#0A0F1F",
+    "secondary": "#1C1F2B",
+    "primaryText": "#F8E71C",
+    "secondaryText": "#C0C0C0",
+    "primaryAction": "#FF007F",
+    "secondaryAction": "#00FFFF"
+  },
+  "customStyles": {
+    "primaryFont": "Orbitron",
+    "secondaryFont": "Roboto",
+    "background": "{\"backgroundImage\":\"url('https://as1.ftcdn.net/v2/jpg/02/65/00/52/1000_F_265005210_IBz5USrazMy1a6DzsmoHguZ5oE3AZ8Ch.jpg')\",\"backgroundColor\":\"#0A0F1F\",\"backgroundSize\":\"cover\",\"backgroundRepeat\":\"no-repeat\",\"color\":\"#C0C0C0\",\"textShadow\":\"2px 2px 4px #000000\",\"boxShadow\":\"inset 0 0 10px #000000\",\"border\":\"5px solid #FF007F\",\"borderRadius\":\"10px\"}",
+    "container": "{\"backgroundColor\":\"#1C1F2B\",\"color\":\"#C0C0C0\",\"border\":\"2px solid #00FFFF\",\"borderRadius\":\"15px\",\"boxShadow\":\"0 0 20px #00FFFF\",\"textShadow\":\"1px 1px 2px #000000\",\"padding\":\"20px\",\"backdropFilter\":\"blur(5px)\"}",
+    "primaryButton": "{\"backgroundColor\":\"#FF007F\",\"color\":\"#0A0F1F\",\"border\":\"3px solid #F8E71C\",\"borderRadius\":\"12px\",\"boxShadow\":\"0 0 10px #F8E71C\",\"textShadow\":\"1px 1px 2px #000000\",\"fontWeight\":\"bold\",\"letterSpacing\":\"1px\"}",
+    "secondaryButton": "{\"backgroundColor\":\"#00FFFF\",\"color\":\"#0A0F1F\",\"border\":\"3px solid #FF007F\",\"borderRadius\":\"12px\",\"boxShadow\":\"0 0 10px #FF007F\",\"textShadow\":\"1px 1px 2px #000000\",\"fontWeight\":\"bold\",\"letterSpacing\":\"1px\"}",
+    "input": "{\"backgroundColor\":\"#1C1F2B\",\"color\":\"#C0C0C0\",\"border\":\"2px solid #F8E71C\",\"borderRadius\":\"8px\",\"boxShadow\":\"inset 0 0 5px #000000\",\"textShadow\":\"1px 1px 2px #000000\",\"padding\":\"10px\",\"outline\":\"none\"}"
+  }
+}

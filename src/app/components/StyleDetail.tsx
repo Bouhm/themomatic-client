@@ -7,7 +7,7 @@ type StyleDetailProps = {
 export default function StyleDetail({ label, color, text }: StyleDetailProps) {
     return (
       <div className="flex-auto w-32">
-        <h4 className="font-bold sm:text-base">
+        <h4 className="font-bold sm:text-base mb-1">
           {label}
         </h4>
         <div className="flex items-center gap-1">
@@ -17,7 +17,7 @@ export default function StyleDetail({ label, color, text }: StyleDetailProps) {
               style={{ backgroundColor: color }}
             />
           }
-          <span className="inline-block text-black sm:text-lg">{color ?? text}</span>
+          <span className="inline-block sm:text-lg">{color ?? text}</span>
         </div>
       </div>
     );

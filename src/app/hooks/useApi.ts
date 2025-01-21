@@ -31,6 +31,8 @@ const useApi = (apiUrl: string) => {
       }
 
       const result = await response.json();
+      console.log(result)
+
       setData(result.data)
     } catch (err: unknown) {
       if (err instanceof Error) {

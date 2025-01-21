@@ -1,0 +1,21 @@
+{
+  "title": "Swiss Alps Inspired Theme",
+  "description": "This theme captures the essence of the Swiss Alps with a fresh and natural color palette, complemented by elegant typography and subtle visual effects.",
+  "palette": {
+    "primary": "#E0F7FA",
+    "secondary": "#FFFFFF",
+    "primaryText": "#004D40",
+    "secondaryText": "#00796B",
+    "primaryAction": "#388E3C",
+    "secondaryAction": "#81C784"
+  },
+  "customStyles": {
+    "primaryFont": "Montserrat",
+    "secondaryFont": "Open Sans",
+    "background": "{\"backgroundImage\":\"url('https://images.squarespace-cdn.com/content/v1/5c4645722714e56a73cc0554/1612905670673-0733MN7QQ2I344STE0Q3/Lauterbrunnen+Berner+Oberland+Swiss+Alps.jpg?format=1500w')\",\"backgroundColor\":\"#E0F7FA\",\"backgroundSize\":\"cover\",\"backgroundRepeat\":\"no-repeat\",\"backgroundPosition\":\"center\",\"color\":\"#00796B\",\"textShadow\":\"1px 1px 2px #004D40\",\"boxShadow\":\"inset 0 0 10px #004D40\"}",
+    "container": "{\"backgroundColor\":\"#FFFFFF\",\"border\":\"2px solid #004D40\",\"borderRadius\":\"15px\",\"boxShadow\":\"0 4px 8px rgba(0, 0, 0, 0.1)\",\"color\":\"#00796B\",\"fontFamily\":\"'Open Sans', sans-serif\",\"textShadow\":\"0.5px 0.5px 1px #81C784\"}",
+    "primaryButton": "{\"backgroundColor\":\"#388E3C\",\"color\":\"#FFFFFF\",\"border\":\"none\",\"borderRadius\":\"25px\",\"boxShadow\":\"0 4px 6px rgba(0, 0, 0, 0.2)\",\"fontFamily\":\"'Montserrat', sans-serif\",\"textTransform\":\"uppercase\",\"letterSpacing\":\"1px\",\"textShadow\":\"1px 1px 2px #004D40\"}",
+    "secondaryButton": "{\"backgroundColor\":\"#81C784\",\"color\":\"#004D40\",\"border\":\"2px solid #388E3C\",\"borderRadius\":\"25px\",\"boxShadow\":\"0 4px 6px rgba(0, 0, 0, 0.1)\",\"fontFamily\":\"'Open Sans', sans-serif\",\"textTransform\":\"uppercase\",\"letterSpacing\":\"1px\",\"textShadow\":\"0.5px 0.5px 1px #004D40\"}",
+    "input": "{\"backgroundColor\":\"#FFFFFF\",\"color\":\"#00796B\",\"border\":\"2px solid #81C784\",\"borderRadius\":\"15px\",\"boxShadow\":\"inset 0 2px 4px rgba(0, 0, 0, 0.1)\",\"fontFamily\":\"'Open Sans', sans-serif\",\"textShadow\":\"0.5px 0.5px 1px #004D40\"}"
+  }
+}

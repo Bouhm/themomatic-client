@@ -1,0 +1,21 @@
+{
+  "title": "Halloween Themed Website",
+  "description": "This design captures the essence of Halloween with its dark, eerie colors and spooky fonts, perfect for a themed website.",
+  "palette": {
+    "primary": "#1A1A1D",
+    "secondary": "#2C2C34",
+    "primaryText": "#FF7518",
+    "secondaryText": "#E0E0E0",
+    "primaryAction": "#FF4500",
+    "secondaryAction": "#8B0000"
+  },
+  "customStyles": {
+    "primaryFont": "Creepster",
+    "secondaryFont": "Roboto",
+    "background": "{\"backgroundImage\":\"url('https://t4.ftcdn.net/jpg/01/75/41/63/360_F_175416312_CLaJROwFrbqcsuVkTiH5ru5e93NGCWTE.jpg')\",\"backgroundColor\":\"#1A1A1D\",\"backgroundSize\":\"cover\",\"backgroundRepeat\":\"no-repeat\",\"color\":\"#E0E0E0\",\"textShadow\":\"2px 2px 4px #000000\",\"boxShadow\":\"inset 0 0 10px #000000\"}",
+    "container": "{\"backgroundColor\":\"#2C2C34\",\"border\":\"3px solid #FF7518\",\"borderRadius\":\"15px\",\"boxShadow\":\"0 0 15px #FF7518\",\"color\":\"#E0E0E0\",\"padding\":\"20px\",\"fontFamily\":\"'Roboto', sans-serif\"}",
+    "primaryButton": "{\"backgroundColor\":\"#FF4500\",\"color\":\"#FFFFFF\",\"border\":\"2px solid #FF7518\",\"borderRadius\":\"8px\",\"boxShadow\":\"0 4px 8px rgba(0, 0, 0, 0.3)\",\"textTransform\":\"uppercase\",\"letterSpacing\":\"1px\",\"fontFamily\":\"'Roboto', sans-serif\",\"transition\":\"background-color 0.3s ease\"}",
+    "secondaryButton": "{\"backgroundColor\":\"#8B0000\",\"color\":\"#FFFFFF\",\"border\":\"2px solid #FF7518\",\"borderRadius\":\"8px\",\"boxShadow\":\"0 4px 8px rgba(0, 0, 0, 0.3)\",\"textTransform\":\"uppercase\",\"letterSpacing\":\"1px\",\"fontFamily\":\"'Roboto', sans-serif\",\"transition\":\"background-color 0.3s ease\"}",
+    "input": "{\"backgroundColor\":\"#2C2C34\",\"color\":\"#E0E0E0\",\"border\":\"2px solid #FF7518\",\"borderRadius\":\"5px\",\"boxShadow\":\"inset 0 0 5px #FF7518\",\"padding\":\"10px\",\"fontFamily\":\"'Roboto', sans-serif\",\"outline\":\"none\",\"transition\":\"border-color 0.3s ease\"}"
+  }
+}

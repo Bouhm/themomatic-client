@@ -9,7 +9,7 @@ export default function StyleInfo() {
     const { palette, customStyles } = themeConfig;
 
     return (
-        <Container>
+        <Container classNames="p-4">
             <div 
                 className="flex flex-wrap gap-6 p-6 md:min-h-96"
             >
