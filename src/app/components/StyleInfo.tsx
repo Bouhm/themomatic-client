@@ -7,12 +7,9 @@ import { useTheme } from "../hooks/useTheme";
 export default function StyleInfo() {
     const { themeConfig } = useTheme();
     const { palette, customStyles } = themeConfig;
-    const { secondary, primaryAction, secondaryAction } = palette;
-    const buttonColors = [primaryAction, secondaryAction];
-    const style = { ...JSON.parse(customStyles.container), backgroundColor: secondary };
 
     return (
-        <Container style={style}>
+        <Container>
             <div 
                 className="flex flex-wrap gap-6 p-6 md:min-h-96"
             >
@@ -22,8 +19,8 @@ export default function StyleInfo() {
                 <StyleDetail text={customStyles.primaryFont} label="Primary Font" />
                 <StyleDetail text={customStyles.secondaryFont} label="Secondary Font" />
             </div>
-            <Button colors={buttonColors} style={customStyles.primaryButton} primary>Primary</Button>
-            <Button colors={buttonColors} style={customStyles.secondaryButton}>Secondary</Button>
+            <Button primary>Primary</Button>
+            <Button>Secondary</Button>
         </Container>
     );
 }

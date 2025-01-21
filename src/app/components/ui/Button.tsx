@@ -1,13 +1,15 @@
+import { useTheme } from "@/app/hooks/useTheme";
 import { PropsWithChildren } from "react";
 
 type ButtonProps = {
     primary?: boolean
-    colors: string[]
-    style: string
 } & PropsWithChildren
 
-export default function Button({ primary, colors, style, children }: ButtonProps) {
-    const buttonStyles = { ...JSON.parse(style), backgroundColor: colors[+!!!primary] }
+export default function Button({ primary, children }: ButtonProps) {
+    const { themeConfig } = useTheme();
+    const buttonStyle = primary ? themeConfig.customStyles.primaryButton : themeConfig.customStyles.secondaryButton;
+    const buttonColor = primary ? themeConfig.palette.primaryAction : themeConfig.palette.secondaryAction;
+    const buttonStyles = { ...JSON.parse(buttonStyle), backgroundColor: buttonColor }
 
     function handleOnClick() {  
     }

@@ -4,6 +4,7 @@ import ThemeInfo from './ThemeInfo';
 import StyleInfo from './StyleInfo';
 import { useEffect } from 'react';
 import Loader from './Loader';
+import Error from './Error';
 import { useTheme } from '../hooks/useTheme';
 
 export default function Main() {
@@ -33,17 +34,15 @@ export default function Main() {
     generateTheme(query);
   }
 
-  if (isLoading) return <h1>Loading...</h1>
-  if (error) return <h1>Error: {error}</h1>
-
-  const { customStyles } = themeConfig;
+  const { palette, customStyles } = themeConfig;
 
   return (
     <>
       {isLoading && <Loader />}
+      {error && <Error error={error} />}
       <main
         className="flex flex-wrap p-6 md:flex-nowrap max-w-screen-2xl md:max-w-screen-full"
-        style={{ fontFamily: customStyles.secondaryFont }}
+        style={{ fontFamily: customStyles.secondaryFont, color: palette.secondaryText }}
       >
         <div
           className="absolute top-0 left-0 right-0 bottom-0 opacity-40 z-[-1]"

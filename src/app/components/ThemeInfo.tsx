@@ -14,15 +14,15 @@ export default function ThemeInfo({ onSubmit }: ThemeInfoProps) {
   return (
     <div 
       className="flex flex-col gap-4 background:none"
-      style={{ ...JSON.parse(customStyles.background), color: palette.secondaryText }}
+      style={{ ...JSON.parse(customStyles.background), color: palette.primaryText }}
     >
-      <Heading font={customStyles.primaryFont} color={palette.primaryText}>
+      <Heading>
         {title}
       </Heading>
       <h3
         className="text-xl md:min-h-44 md:text-2xl"
       >
-          {description}
+        {description}
       </h3>
       <SearchBar placeholder="Enter a theme" onSubmit={onSubmit} />
       <h2
