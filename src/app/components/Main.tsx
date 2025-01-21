@@ -10,7 +10,7 @@ import { tryParseJson } from '@/utils';
 
 const MAX_PER_DAY = 99;
 const COOLDOWN = 60 * 1000; 
-const apiUrl = "http://127.0.0.1:8787"
+const apiUrl = "https://themomatic-server.bouhm.workers.dev"
 
 export default function Main() {
   const { isLoading, error, data, generateTheme } = useApi(apiUrl);
@@ -66,7 +66,6 @@ export default function Main() {
   useEffect(() => {
     // Add dynamic fonts
     const { primaryFont, secondaryFont } = themeConfig.customStyles;
-    console.log(primaryFont, secondaryFont)
     const fontLink = document.querySelector("link[rel='stylesheet'][data-theme-font]");
     const formattedFonts = `family=${primaryFont}&family=${secondaryFont}`.replace(/ /g, '+');
     const fullLink = `https://fonts.googleapis.com/css2?${formattedFonts}&display=swap`;
