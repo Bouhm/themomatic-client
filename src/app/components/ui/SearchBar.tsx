@@ -1,4 +1,5 @@
 import { useTheme } from '@/app/hooks/useTheme';
+import { tryParseJson } from '@/utils';
 import { Icon } from '@iconify/react';
 import { ChangeEvent, useCallback, useState } from 'react';
 
@@ -32,7 +33,7 @@ export default function SearchBar({ placeholder, onSubmit }: SearchBarProps) {
         type="search"
         maxLength={30}
         placeholder={placeholder}
-        style={JSON.parse(themeConfig!.customStyles.input)}
+        style={tryParseJson(themeConfig!.customStyles.input)}
         onChange={handleOnChange}
         value={query}
       />

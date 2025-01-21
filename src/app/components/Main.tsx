@@ -8,11 +8,48 @@ import Error from './Error';
 import { useTheme } from '../hooks/useTheme';
 import { tryParseJson } from '@/utils';
 
+const MAX_PER_DAY = 5;
+const COOLDOWN = 60 * 1000; 
+
 export default function Main() {
   const apiUrl = "http://127.0.0.1:8787"
   const { isLoading, error, data, generateTheme } = useApi(apiUrl);
   const { themeConfig, setThemeConfig } = useTheme();
-  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(error);
+
+  const [requests, setRequests] = useState(0);
+  const [isCooldown, setIsCooldown] = useState(false);
+
+  useEffect(() => {
+    checkDailyReset();
+    loadRequestsState();
+  }, []);
+
+  const loadRequestsState = () => {
+    const prevRequests = JSON.parse(localStorage.getItem('requests')!) || [];
+    const now = new Date().getTime();
+
+    // Filter out timestamps older than 24 hours
+    const validRequests = prevRequests.filter((timestamp: number) => now - timestamp < 24 * 60 * 60 * 1000);
+    localStorage.setItem('requests', JSON.stringify(validRequests));
+
+    setRequests(validRequests.length);
+    if (validRequests.length > 0 && now - validRequests[validRequests.length - 1] < COOLDOWN) {
+      setIsCooldown(true);
+      setTimeout(() => setIsCooldown(false), COOLDOWN - (now - validRequests[validRequests.length - 1]));
+    }
+  };
+
+  const checkDailyReset = () => {
+    const lastReset = localStorage.getItem('lastReset');
+    const now = new Date();
+
+    if (!lastReset || new Date(lastReset).toDateString() !== now.toDateString()) {
+      localStorage.setItem('requests', JSON.stringify([]));
+      localStorage.setItem('lastReset', now.toISOString());
+      setRequests(0);
+    }
+  };
 
   useEffect(() => {
     if (data != null) {
@@ -22,8 +59,8 @@ export default function Main() {
   }, [data, setThemeConfig])
 
   useEffect(() => {
-    setShowError(!!error)
-  }, [error, setShowError])
+    setErrorMessage(error)
+  }, [error, setErrorMessage])
 
   useEffect(() => {
     // Add dynamic fonts
@@ -38,11 +75,27 @@ export default function Main() {
   }, [themeConfig])
 
   function handleSubmit(query: string) {
+    if (isCooldown || requests >= MAX_PER_DAY) {
+      setErrorMessage("Too many requests; try again later.")
+      return;
+    }
+
+    const now = new Date().getTime();
+    const prevRequests = JSON.parse(localStorage.getItem('requests')!) || [];
+
+    prevRequests.push(now);
+    localStorage.setItem('requests', JSON.stringify(prevRequests));
+
+    setRequests(prevRequests.length);
+    setIsCooldown(true);
+
+    setTimeout(() => setIsCooldown(false), COOLDOWN);
+
     generateTheme(query);
   }
 
   function handleCloseError() {
-    setShowError(false);
+    setErrorMessage('');
   }
 
   const { palette, customStyles } = themeConfig;
@@ -50,7 +103,7 @@ export default function Main() {
   return (
     <>
       {isLoading && <Loader />}
-      {showError && <Error error={error!} onClose={handleCloseError} />}
+      {errorMessage && <Error error={errorMessage} onClose={handleCloseError} />}
       <main
         className="flex flex-wrap p-6 pt-0 md:flex-nowrap max-w-screen-2xl md:max-w-screen-full"
         style={{ fontFamily: customStyles.secondaryFont, color: palette.secondaryText }}

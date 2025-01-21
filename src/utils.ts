@@ -20,7 +20,7 @@ export function tryParseJson(jsonStr: string) {
   let parsedJson: Record<string, string | number> = {};
 
   try {
-    parsedJson = tryParseJson(jsonStr);
+    parsedJson = JSON.parse(jsonStr);
   } catch {
     return {};
   } finally {
