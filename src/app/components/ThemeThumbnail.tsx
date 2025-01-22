@@ -13,7 +13,7 @@ export default function ThemeThumbnail({ imgName, onClick }: ThemeThumbnailProps
 
   return (
     <Container
-      classNames="rounded-xl bg-white w-28 h-28 relative overflow-hidden"
+      classNames="rounded-xl bg-white w-20 h-20 md:w-28 md:h-28 relative overflow-hidden"
     >
       <Image
         className="absolute top-0 right-0 bottom-0 left-0 object-cover cursor-pointer"

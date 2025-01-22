@@ -31,13 +31,16 @@ export default function Main() {
     const now = new Date().getTime();
 
     // Filter out timestamps older than 24 hours
-    const validRequests = prevRequests.filter((timestamp: number) => now - timestamp < 24 * 60 * 60 * 1000);
+    const validRequests = prevRequests.filter((timestamp: number) => (now - timestamp) < 24 * 60 * 60 * 1000);
     localStorage.setItem('requests', JSON.stringify(validRequests));
 
     setRequests(validRequests.length);
-    if (validRequests.length > 0 && now - validRequests[validRequests.length - 1] < COOLDOWN) {
+    const msSinceLastRequest = now - validRequests[validRequests.length - 1];
+    
+    // If last request was made less than a minute ago
+    if (validRequests.length > 0 && msSinceLastRequest < COOLDOWN) {
       setIsCooldown(true);
-      setTimeout(() => setIsCooldown(false), COOLDOWN - (now - validRequests[validRequests.length - 1]));
+      setTimeout(() => setIsCooldown(false), COOLDOWN - (msSinceLastRequest));
     }
   };
 
@@ -45,7 +48,7 @@ export default function Main() {
     const lastReset = localStorage.getItem('lastReset');
     const now = new Date();
 
-    if (!lastReset || new Date(lastReset).toDateString() !== now.toDateString()) {
+    if (!lastReset) {
       localStorage.setItem('requests', JSON.stringify([]));
       localStorage.setItem('lastReset', now.toISOString());
       setRequests(0);
@@ -120,7 +123,7 @@ export default function Main() {
       {isLoading && <Loader />}
       {errorMessage && <Error error={errorMessage} onClose={handleCloseError} />}
       <main
-        className="flex flex-wrap p-6 pt-0 md:p-0 md:flex-nowrap max-w-screen-2xl md:max-w-screen-full"
+        className="flex flex-wrap p-6 pt-2 overflow-x-hidden md:p-0 md:flex-nowrap max-w-screen-2xl md:max-w-screen-full"
         style={{ fontFamily: customStyles.secondaryFont, color: palette.secondaryText }}
       >
         <div
