@@ -13,10 +13,10 @@ export default function ThemeThumbnail({ imgName, onClick }: ThemeThumbnailProps
 
   return (
     <Container
-      classNames="rounded-xl w-28 h-28 relative bg-black overflow-hidden"
+      classNames="flex-initial rounded-xl w-24 sm:w-28 relative overflow-hidden aspect-square"
     >
       <Image
-        className="absolute top-0 right-0 bottom-0 left-0 object-cover cursor-pointer bg-black"
+        className="absolute top-0 right-0 bottom-0 left-0 cursor-pointer object-cover"
         src={`/examples/${imgName}.webp`}
         alt={imgName}
         width="128" height="128"

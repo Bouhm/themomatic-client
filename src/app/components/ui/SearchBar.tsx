@@ -24,7 +24,7 @@ export default function SearchBar({ placeholder, onSubmit }: SearchBarProps) {
 
   return (
     <form
-      className="w-full p-6 md:w-96 md:p-0"
+      className="w-full p-6 md:w-94 md:p-0"
       style={{ color: themeConfig.palette.secondaryText }}
       onSubmit={handleSubmit}
     >

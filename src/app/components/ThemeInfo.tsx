@@ -51,7 +51,7 @@ export default function ThemeInfo({ onSubmit }: ThemeInfoProps) {
       >
         Examples
       </h2>
-      <div className="flex gap-6 mb-6">
+      <div className="flex gap-6 w-full mb-6">
         {examples.map((example) => {
           return <ThemeThumbnail key={example} imgName={example} onClick={() => handleClickExample(example)} />
         })}
