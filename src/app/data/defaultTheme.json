@@ -13,7 +13,7 @@
     "primaryFont": "DM Serif Text",
     "secondaryFont": "Red Hat Text",
     "background": "{ \"background\": \"none\" }",
-    "container": "{ \"backgroundColor\": \"white\", \"borderRadius\": \"0.5em\" }",
+    "container": "{ \"backgroundColor\": \"white\", \"border\": \"solid 2px white \", \"borderRadius\": \"0.8em\" }",
     "primaryButton": "{ \"borderRadius\": \"9999px\", \"border\": \"solid 4px black\", \"color\": \"white\"}",
     "secondaryButton": "{ \"borderRadius\": \"9999px\", \"border\": \"solid 4px black\" }",
     "input": "{ \"borderRadius\": \"9999px\" }"
