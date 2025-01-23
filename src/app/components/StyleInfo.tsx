@@ -1,7 +1,7 @@
 import { camelCaseToTitle } from "@/utils";
 import StyleDetail from "./StyleDetail";
 import Button from "./ui/Button";
-import Container from "./Container";
+import Container from "./ui/Container";
 import { useTheme } from "../hooks/useTheme";
 
 export default function StyleInfo() {

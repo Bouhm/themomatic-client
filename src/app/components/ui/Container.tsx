@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../../hooks/useTheme";
 import { tryParseJson } from "@/utils";
 
 type ContainerProps = {

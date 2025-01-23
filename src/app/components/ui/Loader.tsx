@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../../hooks/useTheme";
 import Modal from "./Modal";
 
 const texts = ["Artificially intelligencing...", "Googling very specific CSS questions...", "Chatting with chatbots...", "Downloading more intelligence...", "Cooking...", "Booping the beeps..."]

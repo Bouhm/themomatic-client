@@ -3,8 +3,8 @@ import useApi from '../hooks/useApi';
 import ThemeInfo from './ThemeInfo';
 import StyleInfo from './StyleInfo';
 import { useEffect, useState } from 'react';
-import Loader from './Loader';
-import Error from './Error';
+import Loader from './ui/Loader';
+import Error from './ui/Error';
 import { useTheme } from '../hooks/useTheme';
 import { tryParseJson } from '@/utils';
 

@@ -1,6 +1,6 @@
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../../hooks/useTheme";
 import Modal from "./Modal";
-import Button from "./ui/Button";
+import Button from "./Button";
 import { Icon } from '@iconify/react';
 
 type ErrorProps = {

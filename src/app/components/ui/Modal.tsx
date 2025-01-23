@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../../hooks/useTheme";
 import Container from "./Container";
 
 export default function Error({ children }: PropsWithChildren) {
